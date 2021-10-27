@@ -5,14 +5,18 @@ import hamburger from './../../images/icon-menu.svg';
 import closeIcon from './../../images/icon-close.svg';
 import { useState } from 'react';
 
-function Navbar({ cartAmount, userPic }) {
+const Navbar = ({ cartAmount, userPic }) => {
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
+  const bodyEl = document.body;
 
   return (
     <nav className='Navbar'>
       <div
         className='Navbar__mobile-toggle'
-        onClick={() => setMobileIsOpen(true)}
+        onClick={() => {
+          setMobileIsOpen(true);
+          bodyEl.style.overflow = 'hidden';
+        }}
       >
         <img src={hamburger} alt='sneakers logo' />
       </div>
@@ -34,11 +38,18 @@ function Navbar({ cartAmount, userPic }) {
         onClick={(e) => {
           if (e.target.classList.contains('Navbar__mobile-menu')) {
             setMobileIsOpen(false);
+            bodyEl.style.overflow = 'auto';
           }
         }}
       >
         <ul className='Navbar__links'>
-          <li className='close-mobile' onClick={() => setMobileIsOpen(false)}>
+          <li
+            className='close-mobile'
+            onClick={() => {
+              setMobileIsOpen(false);
+              bodyEl.style.overflow = 'auto';
+            }}
+          >
             <img src={closeIcon} alt='' className='close-icon' />
           </li>
           <li className='Navbar__link'>
@@ -60,6 +71,6 @@ function Navbar({ cartAmount, userPic }) {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

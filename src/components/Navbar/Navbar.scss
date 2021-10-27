@@ -10,6 +10,7 @@
 
   &__mobile-toggle {
     margin-right: 16px;
+    cursor: pointer;
 
     @include breakpoint(md) {
       display: none;
@@ -30,6 +31,7 @@
 
       @include breakpoint(md) {
         display: none;
+        z-index: 2;
       }
     }
   }
@@ -68,6 +70,7 @@
     position: relative;
     margin-bottom: -2px;
     margin-left: 22px;
+    cursor: pointer;
 
     .cart-amount {
       font-size: 10px;

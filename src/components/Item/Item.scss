@@ -1,0 +1,119 @@
+.Item {
+  background-color: var(--white);
+  &__picture {
+    max-height: 300px;
+    overflow: hidden;
+
+    .image {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    padding: 24px;
+    color: var(--black);
+
+    .brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 15px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+
+    .name {
+      text-transform: capitalize;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 32px;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0.005em;
+      margin-bottom: 20px;
+    }
+
+    .prices-container {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .discounted-price {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 46px;
+      letter-spacing: 0.04em;
+      color: var(--very-dark-blue);
+      margin-right: 15px;
+    }
+
+    .discount {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 26px;
+      letter-spacing: 0.04em;
+      padding: 0 10px 1px 8px;
+      border-radius: 6px;
+      color: var(--orange);
+      background-color: var(--pale-orange);
+    }
+
+    .full-price {
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: 0.04em;
+      text-decoration: line-through;
+      color: var(--grayish-blue);
+      margin-left: auto;
+    }
+
+    .toggle-amount {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 24px;
+      margin-bottom: 16px;
+      border-radius: 11px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 26px;
+      background-color: var(--light-grayish-blue);
+
+      .decrease,
+      .increase {
+        cursor: pointer;
+      }
+    }
+
+    .add-to-cart {
+      padding: 15px;
+      border: none;
+      border-radius: 11px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 26px;
+      color: var(--white);
+      background-color: var(--orange);
+      cursor: pointer;
+      box-shadow: 0px 29px 25px -6px rgba(255, 126, 27, 0.2);
+      margin-bottom: 88px;
+
+      &-icon {
+        height: 16px;
+        width: 18px;
+        filter: brightness(4);
+        margin-right: 16px;
+      }
+    }
+  }
+}
