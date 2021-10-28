@@ -33,6 +33,14 @@ const Navbar = ({ cartAmount, userPic }) => {
 
       <div
         className={`${
+          mobileIsOpen
+            ? 'mobile-menu-background open'
+            : 'mobile-menu-background'
+        }`}
+      ></div>
+
+      <div
+        className={`${
           mobileIsOpen ? 'Navbar__mobile-menu open' : 'Navbar__mobile-menu'
         }`}
         onClick={(e) => {
