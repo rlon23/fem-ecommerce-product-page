@@ -1,12 +1,66 @@
 .Item {
   background-color: var(--white);
+
   &__picture {
-    max-height: 300px;
+    position: relative;
+    height: 300px;
     overflow: hidden;
+    line-height: 0;
 
     .image {
+      position: absolute;
+      bottom: -37px;
+      left: 0;
       height: auto;
       width: 100%;
+      opacity: 0;
+
+      &.activeSlide {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      &.lastSlide {
+        transform: translateX(-100%);
+      }
+
+      &.nextSlide {
+        transform: translateX(100%);
+      }
+    }
+
+    .nextSlide,
+    .previousSlide {
+      position: absolute;
+      top: 130px;
+      height: 40px;
+      width: 40px;
+      background-color: white;
+      border-radius: 50%;
+      cursor: pointer;
+
+      img {
+        position: relative;
+      }
+    }
+
+    .nextSlide {
+      right: 16px;
+
+      img {
+        top: 14px;
+        left: 17px;
+        width: 9px;
+      }
+    }
+    .previousSlide {
+      left: 16px;
+
+      img {
+        top: 14px;
+        left: 14px;
+        width: 8px;
+      }
     }
   }
 

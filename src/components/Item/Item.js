@@ -2,7 +2,9 @@ import './Item.scss';
 import cartIcon from './../../images/icon-cart.svg';
 import minusIcon from './../../images/icon-minus.svg';
 import plusIcon from './../../images/icon-plus.svg';
-import { useState } from 'react';
+import iconNext from './../../images/icon-next.svg';
+import iconPrevious from './../../images/icon-previous.svg';
+import { useEffect, useState } from 'react';
 
 const Item = ({
   id,
@@ -13,13 +15,54 @@ const Item = ({
   description,
   price,
   discount,
+  images,
 }) => {
   const [amount, setAmount] = useState(0);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const lastIndex = images.length - 1;
+    if (index < 0) {
+      setIndex(lastIndex);
+    }
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, images]);
 
   return (
     <article className='Item'>
       <div className='Item__picture'>
-        <img className='image' src={picture} alt='product' />
+        {images.map((item, itemIndex) => {
+          let position = 'nextSlide';
+
+          if (itemIndex === index) {
+            position = 'activeSlide';
+          }
+
+          if (
+            itemIndex === index - 1 ||
+            (index === 0 && itemIndex === images.length - 1)
+          ) {
+            position = 'lastSlide';
+          }
+
+          return (
+            <img
+              key={itemIndex}
+              className={`${position} image`}
+              src={item.picture}
+              alt='product'
+            />
+          );
+        })}
+
+        <div className='previousSlide' onClick={() => setIndex(index - 1)}>
+          <img src={iconPrevious} alt='previous' />
+        </div>
+        <div className='nextSlide' onClick={() => setIndex(index + 1)}>
+          <img src={iconNext} alt='next' />
+        </div>
       </div>
       <div className='Item__info'>
         <p className='brand'>{brand}</p>
