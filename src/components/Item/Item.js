@@ -10,15 +10,16 @@ const Item = ({
   id,
   brand,
   name,
-  thumbnail,
-  picture,
   description,
   price,
   discount,
   images,
+  cart,
+  setCart,
 }) => {
   const [amount, setAmount] = useState(0);
   const [index, setIndex] = useState(0);
+  const discountedPrice = (price - (price * discount) / 100).toFixed(2);
 
   useEffect(() => {
     const lastIndex = images.length - 1;
@@ -70,10 +71,7 @@ const Item = ({
         <p className='description'>{description}</p>
 
         <div className='prices-container'>
-          <p className='discounted-price'>{`$${(
-            price -
-            (price * discount) / 100
-          ).toFixed(2)}`}</p>
+          <p className='discounted-price'>{`$${discountedPrice}`}</p>
           <p className='discount'>{`${discount}%`}</p>
           <p className='full-price'>{`$${price.toFixed(2)}`}</p>
         </div>
@@ -98,7 +96,33 @@ const Item = ({
           />
         </div>
 
-        <button className='add-to-cart'>
+        <button
+          className='add-to-cart'
+          onClick={() => {
+            if (amount !== 0) {
+              const newItem = {
+                id: id,
+                name: name,
+                price: discountedPrice,
+                totalPrice: discountedPrice * amount,
+                amount: amount,
+              };
+              cart.map((item) => {
+                if (item.id === newItem.id) {
+                  item.amount += newItem.amount;
+                  item.totalPrice += newItem.totalPrice;
+                }
+                return item;
+              });
+              setCart([...cart]);
+
+              if (cart.length === 0) {
+                setCart([...cart, newItem]);
+              }
+              setAmount(0);
+            }
+          }}
+        >
           <img className='add-to-cart-icon' src={cartIcon} alt='cart' />
           Add to cart
         </button>

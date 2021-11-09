@@ -10,6 +10,7 @@ import item_3_thumbnail from './../src/images/image-product-3-thumbnail.jpg';
 import item_3_picture from './../src/images/image-product-3.jpg';
 import item_4_thumbnail from './../src/images/image-product-4-thumbnail.jpg';
 import item_4_picture from './../src/images/image-product-4.jpg';
+import { useState } from 'react';
 
 function App() {
   const itemImages = [
@@ -19,10 +20,13 @@ function App() {
     { picture: item_4_picture, thumbnail: item_4_thumbnail },
   ];
 
+  const [cart, setCart] = useState([]);
+  console.log(cart);
+
   return (
     <div className='App'>
       <header className='App-header'>
-        <Navbar cartAmount={3} userPic={user} />
+        <Navbar cartAmount={cart.length} userPic={user} />
       </header>
       <main className='App-main'>
         <Item
@@ -37,6 +41,8 @@ function App() {
           }
           price={250.0}
           discount={50}
+          setCart={setCart}
+          cart={cart}
         />
       </main>
     </div>
