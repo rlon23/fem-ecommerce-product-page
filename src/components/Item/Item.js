@@ -107,12 +107,15 @@ const Item = ({
                 totalPrice: discountedPrice * amount,
                 amount: amount,
               };
+
               cart.map((item) => {
                 if (item.id === newItem.id) {
                   item.amount += newItem.amount;
                   item.totalPrice += newItem.totalPrice;
+                  return item;
+                } else {
+                  return newItem;
                 }
-                return item;
               });
               setCart([...cart]);
 
