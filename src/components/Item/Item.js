@@ -106,6 +106,7 @@ const Item = ({
                 price: discountedPrice,
                 totalPrice: discountedPrice * amount,
                 amount: amount,
+                thumbnail: images[0].thumbnail,
               };
 
               cart.map((item) => {
