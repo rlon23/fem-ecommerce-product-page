@@ -21,12 +21,11 @@ function App() {
   ];
 
   const [cart, setCart] = useState([]);
-  console.log(cart);
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <Navbar cartAmount={cart.length} userPic={user} />
+        <Navbar cart={cart} userPic={user} />
       </header>
       <main className='App-main'>
         <Item

@@ -5,9 +5,14 @@ import hamburger from './../../images/icon-menu.svg';
 import closeIcon from './../../images/icon-close.svg';
 import { useState } from 'react';
 
-const Navbar = ({ cartAmount, userPic }) => {
+const Navbar = ({ cart, userPic }) => {
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const bodyEl = document.body;
+
+  const cartAmount = cart.reduce((total, item) => {
+    total += item.amount;
+    return total;
+  }, 0);
 
   return (
     <nav className='Navbar'>
