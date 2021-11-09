@@ -5,7 +5,7 @@ import hamburger from './../../images/icon-menu.svg';
 import closeIcon from './../../images/icon-close.svg';
 import { useState } from 'react';
 
-const Navbar = ({ cart, userPic }) => {
+const Navbar = ({ cart, userPic, cartIsOpen, setCartIsOpen }) => {
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const bodyEl = document.body;
 
@@ -28,7 +28,7 @@ const Navbar = ({ cart, userPic }) => {
       <div className='Navbar__logo'>
         <img src={logo} alt='sneakers logo' />
       </div>
-      <div className='Navbar__cart'>
+      <div className='Navbar__cart' onClick={() => setCartIsOpen(!cartIsOpen)}>
         <img src={cartLogo} alt='cart icon' />
         <p className='cart-amount'>{cartAmount}</p>
       </div>

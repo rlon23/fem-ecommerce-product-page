@@ -22,14 +22,20 @@ function App() {
   ];
 
   const [cart, setCart] = useState([]);
+  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <Navbar cart={cart} userPic={user} />
+        <Navbar
+          cart={cart}
+          userPic={user}
+          cartIsOpen={cartIsOpen}
+          setCartIsOpen={setCartIsOpen}
+        />
       </header>
       <main className='App-main'>
-        <Cart cart={cart} setCart={setCart} />
+        <Cart cart={cart} setCart={setCart} cartIsOpen={cartIsOpen} />
         <Item
           id={1}
           brand={'Sneaker Company'}
