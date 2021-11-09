@@ -46,13 +46,13 @@
   }
 
   &__items {
-    padding: 23px 24px 32px;
+    padding: 24px 24px 32px;
   }
 
   &__item {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 26px;
 
     &-thumbnail {
       height: 50px;
@@ -80,7 +80,7 @@
     }
 
     .name {
-      margin: 5px 0;
+      margin: 3px 0;
     }
 
     .price {
@@ -97,6 +97,7 @@
     .deleteItem {
       margin-left: auto;
       cursor: pointer;
+      padding: 18px 0 13px 10px;
     }
   }
 

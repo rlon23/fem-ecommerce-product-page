@@ -134,7 +134,7 @@
       flex-flow: row nowrap;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 24px;
+      // padding: 15px 24px;
       margin-bottom: 16px;
       border-radius: 11px;
       font-size: 16px;
@@ -145,6 +145,14 @@
       .decrease,
       .increase {
         cursor: pointer;
+      }
+
+      .decrease {
+        padding: 27px 24px 25px;
+      }
+
+      .increase {
+        padding: 22px 24px;
       }
     }
 
