@@ -25,9 +25,29 @@ const Navbar = ({ cart, userPic, cartIsOpen, setCartIsOpen }) => {
       >
         <img src={hamburger} alt='sneakers logo' />
       </div>
+
       <div className='Navbar__logo'>
         <img src={logo} alt='sneakers logo' />
       </div>
+
+      <ul className='Navbar__links'>
+        <li className='Navbar__link'>
+          <a href='#Collections'>Collections</a>
+        </li>
+        <li className='Navbar__link'>
+          <a href='#Men'>Men</a>
+        </li>
+        <li className='Navbar__link'>
+          <a href='#Women'>Women</a>
+        </li>
+        <li className='Navbar__link'>
+          <a href='#About'>About</a>
+        </li>
+        <li className='Navbar__link'>
+          <a href='#Contact'>Contact</a>
+        </li>
+      </ul>
+
       <div className='Navbar__cart' onClick={() => setCartIsOpen(!cartIsOpen)}>
         <img src={cartLogo} alt='cart icon' />
         <p className='cart-amount'>{cartAmount}</p>

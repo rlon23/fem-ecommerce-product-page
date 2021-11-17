@@ -3,7 +3,8 @@
 @import './sass/variables';
 
 .App {
-  background-color: cadetblue;
+  // background-color: cadetblue;
+  background-color: var(--white);
   height: 100vh;
 }
 

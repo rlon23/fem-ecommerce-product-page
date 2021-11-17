@@ -2,11 +2,26 @@
 
 .Navbar {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   align-items: flex-end;
   position: relative;
   background-color: var(--white);
   padding: 20px 24px 25px;
+
+  @include breakpoint(md) {
+    align-items: flex-start;
+    margin: 0 56px 90px;
+    padding: 28px 0 35px;
+    border-bottom: 1px solid var(--grayish-blue);
+  }
+
+  @include breakpoint(lg) {
+    margin: 0 110px 90px;
+  }
+
+  @include breakpoint(xl) {
+    margin: 0 165px 90px;
+  }
 
   &__mobile-toggle {
     margin-right: 16px;
@@ -51,36 +66,72 @@
         display: none;
       }
     }
+
+    .Navbar__links {
+      display: block;
+      margin: 0;
+      padding: 24px 25px;
+      box-sizing: border-box;
+      height: 100%;
+      width: 250px;
+      list-style-type: none;
+      background-color: var(--white);
+
+      .close-mobile {
+        margin-bottom: 49px;
+      }
+
+      .Navbar__link {
+        margin-bottom: 17px;
+
+        a {
+          text-decoration: none;
+          color: var(--black);
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 29px;
+        }
+      }
+    }
   }
 
   &__links {
-    margin: 0;
-    padding: 24px 25px;
-    box-sizing: border-box;
-    height: 100%;
-    width: 250px;
+    display: none;
     list-style-type: none;
-    background-color: var(--white);
+    margin: 0;
+    padding: 0;
 
-    .close-mobile {
-      margin-bottom: 49px;
-    }
+    @include breakpoint(md) {
+      display: flex;
+      margin: 15px 0 0 0;
 
-    .Navbar__link {
-      margin-bottom: 17px;
+      .Navbar__link {
+        margin-right: 16px;
+      }
 
       a {
         text-decoration: none;
-        color: var(--black);
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 29px;
+        color: var(--dark-grayish-blue);
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0.005em;
+      }
+    }
+
+    @include breakpoint(lg) {
+      .Navbar__link {
+        margin-right: 32px;
       }
     }
   }
 
   &__logo {
     margin-right: auto;
+
+    @include breakpoint(md) {
+      margin-top: 15px;
+      margin-right: 57px;
+    }
   }
 
   &__cart {
@@ -88,6 +139,11 @@
     margin-bottom: -2px;
     margin-left: 22px;
     cursor: pointer;
+
+    @include breakpoint(md) {
+      margin-left: auto;
+      margin-top: 15px;
+    }
 
     .cart-amount {
       font-size: 10px;
@@ -110,6 +166,18 @@
     align-self: flex-end;
     margin-left: 22px;
     cursor: pointer;
+
+    @include breakpoint(md) {
+      height: 50px;
+      width: 50px;
+      margin-left: 23px;
+    }
+
+    @include breakpoint(lg) {
+      height: 50px;
+      width: 50px;
+      margin-left: 46px;
+    }
 
     img {
       height: auto;
