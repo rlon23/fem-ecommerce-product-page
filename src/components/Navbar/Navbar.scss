@@ -97,16 +97,26 @@
 
   &__links {
     display: none;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 
     @include breakpoint(md) {
       display: flex;
+      list-style-type: none;
+      padding: 0;
       margin: 15px 0 0 0;
 
       .Navbar__link {
+        position: relative;
         margin-right: 16px;
+      }
+
+      .Navbar__link:hover::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        background-color: var(--orange);
+        height: 4px;
+        bottom: -51px;
+        left: 0;
       }
 
       a {
@@ -165,6 +175,7 @@
     flex-shrink: 0;
     align-self: flex-end;
     margin-left: 22px;
+    border-radius: 50%;
     cursor: pointer;
 
     @include breakpoint(md) {
@@ -183,5 +194,9 @@
       height: auto;
       width: 100%;
     }
+  }
+
+  &__user:hover {
+    box-shadow: 0px 0px 0px 2px var(--orange);
   }
 }
