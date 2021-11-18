@@ -33,7 +33,7 @@ const Item = ({
 
   return (
     <article className='Item'>
-      <div className='Item__picture'>
+      <div className='Item__pictures--mobile'>
         {images.map((item, itemIndex) => {
           let position = 'nextSlide';
 
@@ -65,6 +65,20 @@ const Item = ({
           <img src={iconNext} alt='next' />
         </div>
       </div>
+      <div className='Item__pictures'>
+        <div className='active-picture'>
+          <img src={images[0].picture} alt='' />
+        </div>
+        <div className='thumbnails'>
+          {images.map((image, imageIndex) => {
+            return (
+              <div className='thumbnail'>
+                <img src={image.thumbnail} alt='' key={imageIndex} />;
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div className='Item__info'>
         <p className='brand'>{brand}</p>
         <p className='name'>{name}</p>
@@ -76,60 +90,62 @@ const Item = ({
           <p className='full-price'>{`$${price.toFixed(2)}`}</p>
         </div>
 
-        <div className='toggle-amount'>
-          <img
-            className='decrease'
+        <div className='Item__info__buttons'>
+          <div className='toggle-amount'>
+            <img
+              className='decrease'
+              onClick={() => {
+                if (amount > 0) {
+                  setAmount(amount - 1);
+                }
+              }}
+              src={minusIcon}
+              alt='decrease'
+            />
+            <p className='amount'>{amount}</p>
+            <img
+              className='increase'
+              onClick={() => setAmount(amount + 1)}
+              src={plusIcon}
+              alt='increase'
+            />
+          </div>
+
+          <button
+            className='add-to-cart'
             onClick={() => {
-              if (amount > 0) {
-                setAmount(amount - 1);
+              if (amount !== 0) {
+                const newItem = {
+                  id: id,
+                  name: name,
+                  price: discountedPrice,
+                  totalPrice: discountedPrice * amount,
+                  amount: amount,
+                  thumbnail: images[0].thumbnail,
+                };
+
+                cart.map((item) => {
+                  if (item.id === newItem.id) {
+                    item.amount += newItem.amount;
+                    item.totalPrice += newItem.totalPrice;
+                    return item;
+                  } else {
+                    return newItem;
+                  }
+                });
+                setCart([...cart]);
+
+                if (cart.length === 0) {
+                  setCart([...cart, newItem]);
+                }
+                setAmount(0);
               }
             }}
-            src={minusIcon}
-            alt='decrease'
-          />
-          <p className='amount'>{amount}</p>
-          <img
-            className='increase'
-            onClick={() => setAmount(amount + 1)}
-            src={plusIcon}
-            alt='increase'
-          />
+          >
+            <img className='add-to-cart-icon' src={cartIcon} alt='cart' />
+            Add to cart
+          </button>
         </div>
-
-        <button
-          className='add-to-cart'
-          onClick={() => {
-            if (amount !== 0) {
-              const newItem = {
-                id: id,
-                name: name,
-                price: discountedPrice,
-                totalPrice: discountedPrice * amount,
-                amount: amount,
-                thumbnail: images[0].thumbnail,
-              };
-
-              cart.map((item) => {
-                if (item.id === newItem.id) {
-                  item.amount += newItem.amount;
-                  item.totalPrice += newItem.totalPrice;
-                  return item;
-                } else {
-                  return newItem;
-                }
-              });
-              setCart([...cart]);
-
-              if (cart.length === 0) {
-                setCart([...cart, newItem]);
-              }
-              setAmount(0);
-            }
-          }}
-        >
-          <img className='add-to-cart-icon' src={cartIcon} alt='cart' />
-          Add to cart
-        </button>
       </div>
     </article>
   );

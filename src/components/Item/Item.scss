@@ -1,11 +1,35 @@
+@import './../../sass/mixins';
+
 .Item {
   background-color: var(--white);
+  display: flex;
+  flex-flow: column wrap;
+  background-color: aquamarine;
 
-  &__picture {
+  @include breakpoint(md) {
+    flex-flow: row nowrap;
+    margin: 0 71px;
+  }
+
+  @include breakpoint(lg) {
+    flex-flow: row nowrap;
+    margin: 0 142px;
+  }
+
+  @include breakpoint(xl) {
+    flex-flow: row nowrap;
+    margin: 0 213px;
+  }
+
+  &__pictures--mobile {
     position: relative;
     height: 300px;
     overflow: hidden;
     line-height: 0;
+
+    @include breakpoint(md) {
+      display: none;
+    }
 
     .image {
       position: absolute;
@@ -64,9 +88,84 @@
     }
   }
 
+  &__pictures {
+    display: none;
+    background-color: violet;
+    line-height: 0;
+
+    @include breakpoint(md) {
+      display: block;
+    }
+
+    .active-picture {
+      border-radius: 15px;
+      overflow: hidden;
+
+      @include breakpoint(md) {
+        margin-bottom: 16px;
+      }
+
+      @include breakpoint(lg) {
+        margin-bottom: 32px;
+      }
+    }
+
+    .thumbnails {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+
+      @include breakpoint(md) {
+        gap: 7px;
+      }
+
+      @include breakpoint(lg) {
+        gap: 15px;
+      }
+
+      @include breakpoint(xl) {
+        gap: 30px;
+      }
+    }
+
+    .thumbnail {
+      border-radius: 9px;
+      overflow: hidden;
+
+      @include breakpoint(md) {
+        height: 85px;
+        width: 85px;
+      }
+
+      @include breakpoint(xl) {
+        height: 88px;
+        width: 88px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   &__info {
     padding: 24px;
     color: var(--black);
+    box-sizing: border-box;
+
+    @include breakpoint(md) {
+      padding: 62px 0 77px 42px;
+      max-width: 570px;
+    }
+
+    @include breakpoint(lg) {
+      padding: 62px 0 77px 84px;
+    }
+
+    @include breakpoint(xl) {
+      padding: 62px 0 77px 125px;
+    }
 
     .brand {
       font-size: 12px;
@@ -76,6 +175,10 @@
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 14px;
+
+      @include breakpoint(md) {
+        margin-bottom: 19px;
+      }
     }
 
     .name {
@@ -84,6 +187,12 @@
       font-weight: 700;
       line-height: 32px;
       margin-bottom: 16px;
+
+      @include breakpoint(md) {
+        font-size: 44px;
+        line-height: 48px;
+        margin-bottom: 35px;
+      }
     }
 
     .description {
@@ -98,6 +207,10 @@
       flex-flow: row wrap;
       align-items: center;
       margin-bottom: 18px;
+
+      @include breakpoint(md) {
+        margin-bottom: 34px;
+      }
     }
 
     .discounted-price {
@@ -127,6 +240,10 @@
       text-decoration: line-through;
       color: var(--grayish-blue);
       margin-left: auto;
+
+      @include breakpoint(md) {
+        width: 100%;
+      }
     }
 
     .toggle-amount {
@@ -134,13 +251,18 @@
       flex-flow: row nowrap;
       align-items: center;
       justify-content: space-between;
-      // padding: 15px 24px;
       margin-bottom: 16px;
       border-radius: 11px;
       font-size: 16px;
       font-weight: 700;
       line-height: 26px;
       background-color: var(--light-grayish-blue);
+
+      @include breakpoint(md) {
+        width: 157px;
+        margin-bottom: 0;
+        margin-right: 16px;
+      }
 
       .decrease,
       .increase {
@@ -170,11 +292,25 @@
       box-shadow: 0px 29px 25px -6px rgba(255, 126, 27, 0.2);
       margin-bottom: 88px;
 
+      @include breakpoint(md) {
+        min-width: 140px;
+        margin: 0;
+      }
+
       &-icon {
         height: 16px;
         width: 18px;
         filter: brightness(4);
         margin-right: 16px;
+      }
+    }
+
+    &__buttons {
+      display: block;
+
+      @include breakpoint(md) {
+        display: flex;
+        flex-flow: row nowrap;
       }
     }
   }
