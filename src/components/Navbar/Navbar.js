@@ -4,8 +4,10 @@ import cartLogo from './../../images/icon-cart.svg';
 import hamburger from './../../images/icon-menu.svg';
 import closeIcon from './../../images/icon-close.svg';
 import { useState } from 'react';
+import Cart from '../Cart/Cart';
 
-const Navbar = ({ cart, userPic, cartIsOpen, setCartIsOpen }) => {
+const Navbar = ({ ...props }) => {
+  const { cart, userPic, cartIsOpen, setCartIsOpen, setCart } = props;
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const bodyEl = document.body;
 
@@ -16,6 +18,7 @@ const Navbar = ({ cart, userPic, cartIsOpen, setCartIsOpen }) => {
 
   return (
     <nav className='Navbar'>
+      <Cart cart={cart} setCart={setCart} cartIsOpen={cartIsOpen} />
       <div
         className='Navbar__mobile-toggle'
         onClick={() => {
@@ -50,7 +53,9 @@ const Navbar = ({ cart, userPic, cartIsOpen, setCartIsOpen }) => {
 
       <div className='Navbar__cart' onClick={() => setCartIsOpen(!cartIsOpen)}>
         <img src={cartLogo} alt='cart icon' />
-        <p className='cart-amount'>{cartAmount}</p>
+        <p className={`${cartAmount ? 'cart-amount hasItems' : 'cart-amount'}`}>
+          {cartAmount}
+        </p>
       </div>
       <div className='Navbar__user'>
         <img src={userPic} alt='user' />

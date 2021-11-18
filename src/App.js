@@ -11,7 +11,6 @@ import item_3_picture from './../src/images/image-product-3.jpg';
 import item_4_thumbnail from './../src/images/image-product-4-thumbnail.jpg';
 import item_4_picture from './../src/images/image-product-4.jpg';
 import { useState } from 'react';
-import Cart from './components/Cart/Cart';
 
 function App() {
   const itemImages = [
@@ -30,12 +29,13 @@ function App() {
         <Navbar
           cart={cart}
           userPic={user}
+          setCart={setCart}
           cartIsOpen={cartIsOpen}
           setCartIsOpen={setCartIsOpen}
         />
       </header>
       <main className='App-main'>
-        <Cart cart={cart} setCart={setCart} cartIsOpen={cartIsOpen} />
+        {/* <Cart cart={cart} setCart={setCart} cartIsOpen={cartIsOpen} /> */}
         <Item
           id={1}
           brand={'Sneaker Company'}

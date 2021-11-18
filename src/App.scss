@@ -5,9 +5,13 @@
 .App {
   // background-color: cadetblue;
   background-color: var(--white);
-  height: 100vh;
 }
 
 p {
   margin: 0;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
 }

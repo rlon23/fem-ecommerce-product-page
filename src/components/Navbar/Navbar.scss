@@ -164,6 +164,7 @@
     }
 
     .cart-amount {
+      display: none;
       font-size: 10px;
       font-weight: 700;
       position: absolute;
@@ -174,6 +175,10 @@
       color: var(--white);
       background-color: var(--orange);
       border-radius: 50%;
+
+      &.hasItems {
+        display: block;
+      }
     }
   }
 
