@@ -58,6 +58,10 @@
     transform: translateX(-100%);
     transition: all var(--anim-duration) ease-in-out;
 
+    @include breakpoint(md) {
+      display: none;
+    }
+
     &.open {
       visibility: visible;
       transform: translateX(0);
@@ -140,6 +144,10 @@
 
     @include breakpoint(md) {
       margin-top: 15px;
+      margin-right: 40px;
+    }
+
+    @include breakpoint(lg) {
       margin-right: 57px;
     }
   }
