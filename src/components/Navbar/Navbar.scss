@@ -90,6 +90,7 @@
 
         a {
           text-decoration: none;
+          text-transform: capitalize;
           color: var(--black);
           font-size: 18px;
           font-weight: 700;
@@ -113,7 +114,8 @@
         margin-right: 16px;
       }
 
-      .Navbar__link:hover::after {
+      .Navbar__link:hover::after,
+      .Navbar__link.active::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -125,6 +127,7 @@
 
       a {
         text-decoration: none;
+        text-transform: capitalize;
         color: var(--dark-grayish-blue);
         font-size: 15px;
         line-height: 19px;

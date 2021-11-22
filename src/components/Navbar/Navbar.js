@@ -7,8 +7,10 @@ import { useState } from 'react';
 import Cart from '../Cart/Cart';
 
 const Navbar = ({ ...props }) => {
+  const links = ['collections', 'men', 'women', 'about', 'contact'];
   const { cart, userPic, cartIsOpen, setCartIsOpen, setCart } = props;
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState(-1);
   const bodyEl = document.body;
 
   const cartAmount = cart.reduce((total, item) => {
@@ -34,21 +36,20 @@ const Navbar = ({ ...props }) => {
       </div>
 
       <ul className='Navbar__links'>
-        <li className='Navbar__link'>
-          <a href='#Collections'>Collections</a>
-        </li>
-        <li className='Navbar__link'>
-          <a href='#Men'>Men</a>
-        </li>
-        <li className='Navbar__link'>
-          <a href='#Women'>Women</a>
-        </li>
-        <li className='Navbar__link'>
-          <a href='#About'>About</a>
-        </li>
-        <li className='Navbar__link'>
-          <a href='#Contact'>Contact</a>
-        </li>
+        {links.map((link, index) => {
+          return (
+            <li
+              className={`${
+                activeLink === index ? 'Navbar__link active' : 'Navbar__link'
+              }`}
+              onClick={() => {
+                setActiveLink(index);
+              }}
+            >
+              <a href={`#${link}`}>{link}</a>
+            </li>
+          );
+        })}
       </ul>
 
       <div className='Navbar__cart' onClick={() => setCartIsOpen(!cartIsOpen)}>
@@ -90,21 +91,13 @@ const Navbar = ({ ...props }) => {
           >
             <img src={closeIcon} alt='' className='close-icon' />
           </li>
-          <li className='Navbar__link'>
-            <a href='#Collections'>Collections</a>
-          </li>
-          <li className='Navbar__link'>
-            <a href='#Men'>Men</a>
-          </li>
-          <li className='Navbar__link'>
-            <a href='#Women'>Women</a>
-          </li>
-          <li className='Navbar__link'>
-            <a href='#About'>About</a>
-          </li>
-          <li className='Navbar__link'>
-            <a href='#Contact'>Contact</a>
-          </li>
+          {links.map((link) => {
+            return (
+              <li className='Navbar__link'>
+                <a href={`#${link}`}>{link}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
