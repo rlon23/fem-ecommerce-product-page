@@ -39,6 +39,7 @@ const Navbar = ({ ...props }) => {
         {links.map((link, index) => {
           return (
             <li
+              key={index}
               className={`${
                 activeLink === index ? 'Navbar__link active' : 'Navbar__link'
               }`}
@@ -91,9 +92,9 @@ const Navbar = ({ ...props }) => {
           >
             <img src={closeIcon} alt='' className='close-icon' />
           </li>
-          {links.map((link) => {
+          {links.map((link, index) => {
             return (
-              <li className='Navbar__link'>
+              <li key={index} className='Navbar__link'>
                 <a href={`#${link}`}>{link}</a>
               </li>
             );

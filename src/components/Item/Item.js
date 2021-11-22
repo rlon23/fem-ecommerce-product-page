@@ -72,7 +72,7 @@ const Item = ({
         <div className='thumbnails'>
           {images.map((image, imageIndex) => {
             return (
-              <div className='thumbnail'>
+              <div key={imageIndex} className='thumbnail'>
                 <img src={image.thumbnail} alt='' key={imageIndex} />;
               </div>
             );
