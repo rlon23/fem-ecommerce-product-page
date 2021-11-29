@@ -19,8 +19,16 @@ const Navbar = ({ ...props }) => {
   }, 0);
 
   return (
-    <nav className='Navbar'>
+    <nav
+      className='Navbar'
+      onClick={(e) => {
+        if (e.target.classList.contains('Navbar')) {
+          setCartIsOpen(false);
+        }
+      }}
+    >
       <Cart cart={cart} setCart={setCart} cartIsOpen={cartIsOpen} />
+
       <div
         className='Navbar__mobile-toggle'
         onClick={() => {
@@ -31,7 +39,7 @@ const Navbar = ({ ...props }) => {
         <img src={hamburger} alt='sneakers logo' />
       </div>
 
-      <div className='Navbar__logo'>
+      <div className='Navbar__logo' onClick={() => setActiveLink(-1)}>
         <img src={logo} alt='sneakers logo' />
       </div>
 

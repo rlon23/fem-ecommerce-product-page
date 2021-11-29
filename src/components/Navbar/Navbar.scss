@@ -34,7 +34,6 @@
 
   .mobile-menu-background {
     display: none;
-
     &.open {
       display: block;
       position: fixed;
@@ -44,6 +43,10 @@
       bottom: 0;
       left: 0;
       right: 0;
+
+      @include breakpoint(md) {
+        display: none;
+      }
     }
   }
 

@@ -16,9 +16,12 @@ const Item = ({
   images,
   cart,
   setCart,
+  setCartIsOpen,
 }) => {
   const [amount, setAmount] = useState(0);
   const [index, setIndex] = useState(0);
+  const [activePicture, setActivePicture] = useState(0);
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
   const discountedPrice = (price - (price * discount) / 100).toFixed(2);
 
   useEffect(() => {
@@ -31,8 +34,24 @@ const Item = ({
     }
   }, [index, images]);
 
+  const changeActivePicture = (num) => {
+    const lastIndex = images.length - 1;
+
+    if (num === -1 && activePicture === 0) {
+      setActivePicture(lastIndex);
+      return;
+    }
+
+    if (num === 1 && activePicture === lastIndex) {
+      setActivePicture(0);
+      return;
+    }
+
+    setActivePicture(activePicture + num);
+  };
+
   return (
-    <article className='Item'>
+    <article className='Item' onClick={() => setCartIsOpen(false)}>
       <div className='Item__pictures--mobile'>
         {images.map((item, itemIndex) => {
           let position = 'nextSlide';
@@ -65,15 +84,29 @@ const Item = ({
           <img src={iconNext} alt='next' />
         </div>
       </div>
+
       <div className='Item__pictures'>
-        <div className='active-picture'>
-          <img src={images[0].picture} alt='' />
+        <div
+          className='active-picture'
+          onClick={() => {
+            setLightboxIsOpen(true);
+          }}
+        >
+          <img src={images[activePicture].picture} alt='' />
         </div>
         <div className='thumbnails'>
           {images.map((image, imageIndex) => {
             return (
-              <div key={imageIndex} className='thumbnail'>
-                <img src={image.thumbnail} alt='' key={imageIndex} />;
+              <div
+                key={imageIndex}
+                className={`${
+                  activePicture === imageIndex
+                    ? 'thumbnail active'
+                    : 'thumbnail'
+                }`}
+                onClick={() => setActivePicture(imageIndex)}
+              >
+                <img src={image.thumbnail} alt='' key={imageIndex} />
               </div>
             );
           })}
@@ -145,6 +178,49 @@ const Item = ({
             <img className='add-to-cart-icon' src={cartIcon} alt='cart' />
             Add to cart
           </button>
+        </div>
+      </div>
+
+      <div
+        className={`${
+          lightboxIsOpen ? 'Item__lightbox open' : 'Item__lightbox'
+        }`}
+        onClick={(e) => {
+          if (e.target.classList.contains('Item__lightbox')) {
+            setLightboxIsOpen(false);
+          }
+        }}
+      >
+        <div className='active-picture'>
+          <img src={images[activePicture].picture} alt='' />
+
+          <div
+            className='previousSlide'
+            onClick={() => changeActivePicture(-1)}
+          >
+            <img src={iconPrevious} alt='previous' />
+          </div>
+
+          <div className='nextSlide' onClick={() => changeActivePicture(1)}>
+            <img src={iconNext} alt='next' />
+          </div>
+        </div>
+        <div className='thumbnails'>
+          {images.map((image, imageIndex) => {
+            return (
+              <div
+                key={imageIndex}
+                className={`${
+                  activePicture === imageIndex
+                    ? 'thumbnail active'
+                    : 'thumbnail'
+                }`}
+                onClick={() => setActivePicture(imageIndex)}
+              >
+                <img src={image.thumbnail} alt='' key={imageIndex} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </article>

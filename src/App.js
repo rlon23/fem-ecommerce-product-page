@@ -50,6 +50,7 @@ function App() {
           discount={50}
           setCart={setCart}
           cart={cart}
+          setCartIsOpen={setCartIsOpen}
         />
       </main>
     </div>

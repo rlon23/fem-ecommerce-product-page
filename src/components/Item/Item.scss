@@ -4,7 +4,6 @@
   background-color: var(--white);
   display: flex;
   flex-flow: column wrap;
-  background-color: aquamarine;
 
   @include breakpoint(md) {
     flex-flow: row nowrap;
@@ -33,7 +32,6 @@
 
     .image {
       position: absolute;
-      bottom: -37px;
       left: 0;
       height: auto;
       width: 100%;
@@ -90,7 +88,6 @@
 
   &__pictures {
     display: none;
-    background-color: violet;
     line-height: 0;
 
     @include breakpoint(md) {
@@ -100,6 +97,7 @@
     .active-picture {
       border-radius: 15px;
       overflow: hidden;
+      cursor: pointer;
 
       @include breakpoint(md) {
         margin-bottom: 16px;
@@ -130,7 +128,9 @@
 
     .thumbnail {
       border-radius: 9px;
+      cursor: pointer;
       overflow: hidden;
+      background-color: var(--white);
 
       @include breakpoint(md) {
         height: 85px;
@@ -140,6 +140,20 @@
       @include breakpoint(xl) {
         height: 88px;
         width: 88px;
+      }
+    }
+
+    .thumbnail:hover {
+      img {
+        filter: opacity(0.5);
+      }
+    }
+
+    .thumbnail.active {
+      box-shadow: 0px 0px 0px 2px var(--orange);
+
+      img {
+        filter: opacity(0.3);
       }
     }
 
@@ -312,6 +326,108 @@
         display: flex;
         flex-flow: row nowrap;
       }
+    }
+  }
+
+  &__lightbox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    background-color: var(--black-lightbox);
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .active-picture {
+      margin-top: 133px;
+      width: 550px;
+      height: 550px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .previousSlide,
+      .nextSlide {
+        position: absolute;
+        height: 56px;
+        width: 56px;
+        bottom: 257px;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        text-align: center;
+
+        img {
+          position: relative;
+          top: 20px;
+        }
+      }
+
+      .previousSlide {
+        left: -28px;
+
+        img {
+          width: 12.5px;
+          top: 19px;
+          left: -3px;
+        }
+      }
+
+      .nextSlide {
+        right: -28px;
+
+        img {
+          width: 13px;
+          top: 19px;
+        }
+      }
+    }
+
+    .thumbnails {
+      display: flex;
+      gap: 30px;
+      height: 88px;
+      margin: 40px 0 89px;
+
+      .thumbnail {
+        border-radius: 9px;
+        overflow: hidden;
+        background-color: var(--white);
+        cursor: pointer;
+      }
+
+      .thumbnail:hover {
+        img {
+          filter: opacity(0.5);
+        }
+      }
+
+      .thumbnail.active {
+        box-shadow: 0px 0px 0px 2px var(--orange);
+
+        img {
+          filter: opacity(0.3);
+        }
+      }
+
+      img {
+        width: 88px;
+        height: auto;
+      }
+    }
+  }
+
+  &__lightbox.open {
+    @include breakpoint(md) {
+      display: flex;
     }
   }
 }
