@@ -29,6 +29,25 @@ Users should be able to:
 - View the cart and remove items from it
 
 ### Screenshot
+Mobile
+![Screen Shot 2021-11-29 at 18 46 51](https://user-images.githubusercontent.com/16887430/143960432-206aba8a-6c12-49f5-8f9a-22fd12db1171.png)
+![Screen Shot 2021-11-29 at 18 47 09](https://user-images.githubusercontent.com/16887430/143960446-a2a8f654-acdb-4924-95a0-2769ddab79a7.png)
+
+Tablet
+![Screen Shot 2021-11-29 at 18 43 24](https://user-images.githubusercontent.com/16887430/143960130-2bea4bdf-d59a-4ddd-8c26-90bd20ef88bd.png)
+-Lightbox
+![Screen Shot 2021-11-29 at 18 43 56](https://user-images.githubusercontent.com/16887430/143960164-208d2305-be2a-4e91-b98d-01d3232b4097.png)
+
+Desktop
+![Screen Shot 2021-11-29 at 18 40 36](https://user-images.githubusercontent.com/16887430/143959972-f12ca6df-da99-4207-81a1-d743bedaad25.png)
+-Lightbox
+![Screen Shot 2021-11-29 at 18 42 29](https://user-images.githubusercontent.com/16887430/143960062-c26952b3-6041-4675-ac8c-f786b0ae6ab9.png)
+
+
+
+
+
+
 
 ### Links
 
