@@ -279,7 +279,9 @@
       }
 
       .amount {
-        padding: 0 13px;
+        @include breakpoint(xl) {
+          padding: 0 13px;
+        }
       }
 
       .decrease,
