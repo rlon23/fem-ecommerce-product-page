@@ -4,6 +4,7 @@
   background-color: var(--white);
   display: flex;
   flex-flow: column wrap;
+  padding-bottom: 132px;
 
   @include breakpoint(md) {
     flex-flow: row nowrap;
@@ -182,7 +183,7 @@
     }
 
     .brand {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.14em;
       line-height: 15px;
@@ -220,7 +221,7 @@
       display: flex;
       flex-flow: row wrap;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 19px;
 
       @include breakpoint(md) {
         margin-bottom: 34px;
@@ -273,9 +274,12 @@
       background-color: var(--light-grayish-blue);
 
       @include breakpoint(md) {
-        width: 157px;
         margin-bottom: 0;
         margin-right: 16px;
+      }
+
+      .amount {
+        padding: 0 13px;
       }
 
       .decrease,
