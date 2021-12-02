@@ -23,6 +23,7 @@ const Item = ({
   const [activePicture, setActivePicture] = useState(0);
   const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
   const discountedPrice = (price - (price * discount) / 100).toFixed(2);
+  const bodyEl = document.body;
 
   useEffect(() => {
     const lastIndex = images.length - 1;
@@ -90,6 +91,7 @@ const Item = ({
           className='active-picture'
           onClick={() => {
             setLightboxIsOpen(true);
+            bodyEl.style.overflow = 'hidden';
           }}
         >
           <img src={images[activePicture].picture} alt='' />
@@ -188,6 +190,7 @@ const Item = ({
         onClick={(e) => {
           if (e.target.classList.contains('Item__lightbox')) {
             setLightboxIsOpen(false);
+            bodyEl.style.overflow = 'auto';
           }
         }}
       >

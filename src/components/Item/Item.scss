@@ -4,7 +4,7 @@
   background-color: var(--white);
   display: flex;
   flex-flow: column wrap;
-  padding-bottom: 132px;
+  padding-bottom: 131px;
 
   @include breakpoint(md) {
     flex-flow: row nowrap;
@@ -93,6 +93,15 @@
 
     @include breakpoint(md) {
       display: block;
+      max-width: 292px;
+    }
+
+    @include breakpoint(lg) {
+      max-width: 332px;
+    }
+
+    @include breakpoint(xl) {
+      max-width: 445px;
     }
 
     .active-picture {
@@ -213,8 +222,15 @@
     .description {
       font-size: 15px;
       line-height: 25px;
-      letter-spacing: 0.005em;
+      letter-spacing: 0.002em;
       margin-bottom: 20px;
+      color: var(--dark-grayish-blue);
+
+      @include breakpoint(md) {
+        font-size: 16px;
+        line-height: 26px;
+        max-width: 429px;
+      }
     }
 
     .prices-container {
@@ -276,6 +292,7 @@
       @include breakpoint(md) {
         margin-bottom: 0;
         margin-right: 16px;
+        max-width: 157px;
       }
 
       .amount {
@@ -313,7 +330,8 @@
       margin-bottom: 88px;
 
       @include breakpoint(md) {
-        min-width: 140px;
+        min-width: 150px;
+        max-width: 272px;
         margin: 0;
       }
 
@@ -337,7 +355,9 @@
 
   &__lightbox {
     display: none;
-    position: absolute;
+    justify-content: center;
+    position: fixed;
+    overflow: auto;
     top: 0;
     left: 0;
     width: 100%;
@@ -348,7 +368,7 @@
     align-items: center;
 
     .active-picture {
-      margin-top: 133px;
+      margin-top: 80px;
       width: 550px;
       height: 550px;
       position: relative;
@@ -401,7 +421,7 @@
       display: flex;
       gap: 30px;
       height: 88px;
-      margin: 40px 0 89px;
+      margin: 40px 0;
 
       .thumbnail {
         border-radius: 9px;
@@ -427,6 +447,15 @@
       img {
         width: 88px;
         height: auto;
+      }
+    }
+  }
+
+  @media screen and (max-height: 720px) {
+    .Item__lightbox {
+      justify-content: flex-start;
+      .active-picture {
+        margin-top: 40px;
       }
     }
   }
